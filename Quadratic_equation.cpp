@@ -30,8 +30,7 @@ int main(int argc, char const *argv[]) {
           auto x = (-b) / (2 * a);
           std::cout << "x: " << x;
         } else if (discriminant < 0) {
-          std::cout
-              << "Discriminant is negative, your example has no real solutions";
+          std::cout << "Discriminant is negative, your example has no real solutions";
         }
       } else {
         std::cout << "Number C is out of range, please try again\n";
