@@ -27,8 +27,8 @@ int main(int argc, char const *argv[]) {
           std::cout << "Discriminant > 0, your example has 2 solutions.\n";
           const auto sqrt_discriminant = sqrt(discriminant);
           const auto DIVIDER_2A = FACTOR_2 * a;
-          const auto X1 = (-b - sqrt_discriminant) / (static_cast<float>(DIVIDER_2A));
-          const auto X2 = (-b + sqrt_discriminant) / (static_cast<float>(DIVIDER_2A));
+          const auto X1 = (-b - sqrt_discriminant) / (DIVIDER_2A);
+          const auto X2 = (-b + sqrt_discriminant) / (DIVIDER_2A);
           std::cout << "x1: " << X1 << "\nx2: " << X2;
         } else if (discriminant == 0) {
           std::cout << "Discriminant = 0, your example has 1 solution.\n";
