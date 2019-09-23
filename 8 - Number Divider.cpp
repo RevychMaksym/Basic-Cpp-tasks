@@ -1,21 +1,15 @@
 #include <iostream>
 #include <limits>
 
-// typedef unsigned int uint;
-
-void printDivisors(unsigned int input) {
-  for (unsigned int i = 1; i <= input; i++) {
-    if (input % i == 0) {
-      printf("%d ", i);
-    }
-  }
-}
-
 unsigned int BestDivider(unsigned int input) {
 
   unsigned int best_sum_divider = 0;
   unsigned int best_divider = 0;
+  printf("The divisors of %u are: ", input);
   for (unsigned int i = 1; i <= input; i++) {
+    if (input % i == 0) {
+      printf("%d ", i);
+    }
     if (input % i == 0) {
 
       unsigned int temp = i;
@@ -41,12 +35,10 @@ int main() {
          MIN, MAX);
   unsigned int input;
   std::cin >> input;
-  if ((MIN > input) || (MAX < input)) {
+  if ((MIN > input) && (MAX < input)) {
     std::cout << "Incorrect input, mortal! Try again!" << std::endl;
+    return 1;
   }
-
-  printf("The divisors of %u are: ", input);
-  printDivisors(input);
   const auto best_divider = BestDivider(input);
   std::cout << "\nThe BEST divider is: " << best_divider << std::endl;
   return 0;
