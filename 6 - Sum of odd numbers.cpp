@@ -15,20 +15,20 @@ int main(int argc, char const *argv[]) {
               << "Numbers must be in the [-60; 90] radius: ";
 
     int sum = 0;
-    int *sequence = new int[quantity_of_elmnts];
     const int MIN_ELEMENT = -60;
     const int MAX_ELEMENT = 90;
 
-    for (unsigned int i = 0; i < quantity_of_elmnts; i++) {
-      std::cout << "[" << i << "]: ";
-      std::cin >> sequence[i];
-      if (MIN_ELEMENT <= sequence[i] && MAX_ELEMENT >= sequence[i]) {
-        if ((sequence[i]) % 2 == 1) {
-          sum += sequence[i];
+    while (0 < quantity_of_elmnts) {
+      int input;
+      std::cin >> input;
+      if (MIN_ELEMENT <= input && MAX_ELEMENT >= input) {
+        if ((input) % 2 == 1) {
+          sum += input;
         }
+        quantity_of_elmnts--;
       } else {
-        sequence[i] = 0;
-        std::cout << "Incorrect input! assigned 0.\n";
+        quantity_of_elmnts++;
+        std::cout << "Incorrect input! assigned, try again\n";
       }
     }
 
