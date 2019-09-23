@@ -13,24 +13,25 @@ int main() {
   unsigned int quantity;
   std::cin >> quantity;
   if (MIN_EL > quantity || MAX_EL < quantity) {
+
     std::cout << "Please type a number WITHIN a given range, try again!";
     return 0;
   }
-  unsigned int *num_array = new unsigned int[quantity];
   printf("Initialise your sequence of numbers within a range [%u;%u]: ", MIN,
          MAX);
-  unsigned int input;
+  unsigned int sum = 0;
+  unsigned int input = 0;
   for (unsigned int i = 0; i < quantity; i++) {
     if ((MIN > input) || (MAX < input)) {
       std::cout << "Incorrect input, mortal! Try again!" << std::endl;
+      return 1;
     }
     std::cout << "[" << i << "]: ";
     std::cin >> input;
-    num_array[i] = input;
-  }
-  unsigned int sum = 0;
-  for (unsigned int i = 0; i < quantity; ++i) {
-    unsigned int temp = num_array[i];
+    int argument;
+    argument = input;
+
+    unsigned int temp = argument;
 
     while (temp != 0) {
       sum += temp % 10;
@@ -38,13 +39,7 @@ int main() {
     }
   }
   std::cout << "Your number is: " << sum << std::endl;
-  if (sum % 3 == 0) {
-    std::cout << "Yes! Your number can be divided by 3" << std::endl;
-  } else {
-    std::cout << "No! Your number can not be divided by 3" << std::endl;
-  }
+  (sum % 3 == 0) ? std::cout << "Yes! Your number can be divided by 3"
+                 : std::cout << "No! Your number can not be divided by 3";
   return 0;
 }
-/*while ( !(cin >> coeff_a) ){
- (cout << "Error! Re-Input coefficient <A>: ").flush(); cin.clear(); cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' ); 
-}*/
