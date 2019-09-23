@@ -1,30 +1,30 @@
 #include <iostream>
 #include <limits>
 
-bool isLucky(int input) {
-  int input_length = 0;
-  int argument = input;
+bool isLucky(unsigned int input) {
+  unsigned int input_length = 0;
+  unsigned int argument = input;
 
-  int counter = 0;
+  unsigned int counter = 0;
   while (input) {
     counter++;
     input_length += input % 10;
     input /= 10;
   }
 
-  int sum1 = 0;
+  unsigned int sum1 = 0;
   if (input_length % 2 != 0) {
     std::cout << "Your number is odd, please try again!" << std::endl;
     return false;
   }
 
-  for (int i = 0; i < counter / 2; i++) {
+  for (unsigned int i = 0; i < counter / 2; i++) {
     sum1 += argument % 10;
     argument /= 10;
   }
 
-  int sum2 = 0;
-  for (int i = 0; i < counter / 2; i++) {
+  unsigned int sum2 = 0;
+  for (unsigned int i = 0; i < counter / 2; i++) {
     sum2 += argument % 10;
     argument /= 10;
   }
@@ -33,7 +33,7 @@ bool isLucky(int input) {
 
 int main(int argc, char const *argv[]) {
   std::cout << "Please enter the number of your ticket to find your luck: ";
-  int input;
+  unsigned int input;
   std::cin >> input;
   bool res = isLucky(input);
   if (res == true) {
