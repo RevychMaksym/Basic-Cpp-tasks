@@ -1,4 +1,4 @@
-#include <iostream> 
+#include <iostream>
 #include <limits>
 
 int main(int argc, char const *argv[]) {
@@ -6,25 +6,19 @@ int main(int argc, char const *argv[]) {
   uint32_t input;
   std::cin >> input;
   constexpr uint32_t MAX = std::numeric_limits<uint32_t>::max();
-  if (MAX >= (input)) {
-    struct BitChecker {
-      uint8_t bit;
-    };
-    unsigned int is_set;
-    BitChecker bit_number;
-    std::cout << "Enter the bit you want to check (0-31): ";
-    std::cin >> is_set;
-    bit_number.bit = is_set;
-    if (is_set < 32 && is_set >= 0) {
-      const bool res = input & (1 << (bit_number.bit));
-      if (res == true) {
-        std::cout << "Yes" << std::endl;
-      } else {
-        std::cout << "No" << std::endl;
-      }
-    } else {
-      std::cout << "Incorrect input!" << std::endl;
+  if (MAX >= (input) && 0 <= (input)) {
+
+    uint32_t check_bit;
+    std::cin >> check_bit;
+
+    if (check_bit < 1 || check_bit > 32) {
+      std::cout << "Sorry you have entered incorrect number of 32th bit value. "
+                   "Please try again!";
+      return 1;
     }
+    std::cout << "Bit is";
+    input &(1 << (check_bit - 1)) ? std::cout << " set  \n"
+                                  : std::cout << " not set \n";
   } else {
     std::cout << "Number overflow!" << std::endl;
   }
