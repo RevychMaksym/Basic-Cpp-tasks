@@ -20,26 +20,21 @@ int main() {
   printf("Initialise your sequence of numbers within a range [%u;%u]: ", MIN,
          MAX);
   unsigned int sum = 0;
-  unsigned int input = 0;
-  for (unsigned int i = 0; i < quantity; i++) {
+  for (unsigned int i = 0; i < quantity; ++i) {
+    unsigned int input = 0;
     if ((MIN > input) || (MAX < input)) {
       std::cout << "Incorrect input, mortal! Try again!" << std::endl;
       return 1;
     }
     std::cout << "[" << i << "]: ";
     std::cin >> input;
-    int argument;
-    argument = input;
-
-    unsigned int temp = argument;
-
+    unsigned int temp = input;
     while (temp != 0) {
       sum += temp % 10;
       temp /= 10;
     }
   }
   std::cout << "Your number is: " << sum << std::endl;
-  (sum % 3 == 0) ? std::cout << "Yes! Your number can be divided by 3"
-                 : std::cout << "No! Your number can not be divided by 3";
+  std::cout << ((sum % 3 == 0) ? "Yes! Your number can be divided by 3" : "No! Your number can not be divided by 3");
   return 0;
 }
