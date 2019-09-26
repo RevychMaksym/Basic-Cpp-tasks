@@ -9,9 +9,6 @@ unsigned int BestDivider(unsigned int input) {
   for (unsigned int i = 1; i <= input; i++) {
     if (input % i == 0) {
       printf("%d ", i);
-    }
-    if (input % i == 0) {
-
       unsigned int temp = i;
       unsigned int sum_divider = 0;
       while (temp != 0) {
