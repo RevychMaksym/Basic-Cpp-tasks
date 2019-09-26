@@ -12,12 +12,12 @@ int main(int argc, char const *argv[]) {
   unsigned int stars = 1;
   unsigned int spaces = 1;
   while (stars <= input) {
-    for (int k = input; k >= spaces; --k) {
+    for (unsigned int k = input; k >= spaces; --k) {
       std::cout << " ";
     }
     spaces++;
 
-    for (int i = 1; i <= stars; ++i) {
+    for (unsigned int i = 1; i <= stars; ++i) {
       std::cout << "*";
     }
     stars += 2;
