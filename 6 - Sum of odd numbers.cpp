@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]) {
               "of odd numbers! \n"
               << "Numbers must be in the [-60; 90] radius: ";
 
-    int sum = 0;
+    long long sum = 0;
     const int MIN_ELEMENT = -60;
     const int MAX_ELEMENT = 90;
 
@@ -27,7 +27,6 @@ int main(int argc, char const *argv[]) {
         }
         quantity_of_elmnts--;
       } else {
-        quantity_of_elmnts++;
         std::cout << "Incorrect input! assigned, try again\n";
       }
     }
