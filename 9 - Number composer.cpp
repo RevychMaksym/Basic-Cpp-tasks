@@ -3,8 +3,8 @@
 
 int main() {
 
-  constexpr unsigned int MIN = std::numeric_limits<unsigned int>::min();
-  constexpr unsigned int MAX = std::numeric_limits<unsigned int>::max();
+  constexpr unsigned long MIN = std::numeric_limits<unsigned long>::min();
+  constexpr unsigned long MAX = std::numeric_limits<unsigned long>::max();
 
   const unsigned int MIN_EL = 1;
   const unsigned int MAX_EL = 10;
@@ -22,7 +22,7 @@ int main() {
   unsigned int sum = 0;
   for (unsigned int i = 0; i < quantity; ++i) {
     unsigned int input = 0;
-    if ((MIN > input) || (MAX < input)) {
+    if ((MIN > input) && (MAX < input)) {
       std::cout << "Incorrect input, mortal! Try again!" << std::endl;
       return 1;
     }
