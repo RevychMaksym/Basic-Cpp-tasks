@@ -25,12 +25,12 @@ unsigned int BestDivider(unsigned int input) {
 }
 
 int main() {
-  constexpr unsigned long MIN = std::numeric_limits<unsigned long>::min();
-  constexpr unsigned long MAX = std::numeric_limits<unsigned long>::max();
+  constexpr unsigned int MIN = std::numeric_limits<unsigned int>::min();
+  constexpr unsigned int MAX = std::numeric_limits<unsigned int>::max();
   printf("Please enter a number to calculate all divisors and its best divisor "
          "within a range of [%u;%u]",
          MIN, MAX);
-  unsigned int input;
+  unsigned long input;
   std::cin >> input;
   if ((MIN > input) && (MAX < input)) {
     std::cout << "Incorrect input, mortal! Try again!" << std::endl;
