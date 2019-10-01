@@ -3,9 +3,6 @@
 
 int main() {
 
-  constexpr unsigned long MIN = std::numeric_limits<unsigned long>::min();
-  constexpr unsigned long MAX = std::numeric_limits<unsigned long>::max();
-
   const unsigned int MIN_EL = 1;
   const unsigned int MAX_EL = 10;
   std::cout << "Please enter number of elements in your sequence within a range ["
@@ -17,11 +14,14 @@ int main() {
     std::cout << "Please type a number WITHIN a given range, try again!";
     return 0;
   }
+  
+  constexpr unsigned int MIN = std::numeric_limits<unsigned int>::min();
+  constexpr unsigned int MAX = std::numeric_limits<unsigned int>::max();
   printf("Initialise your sequence of numbers within a range [%u;%u]: ", MIN,
          MAX);
   unsigned int sum = 0;
   for (unsigned int i = 0; i < quantity; ++i) {
-    unsigned int input = 0;
+    unsigned long input = 0;
     if ((MIN > input) && (MAX < input)) {
       std::cout << "Incorrect input, mortal! Try again!" << std::endl;
       return 1;
