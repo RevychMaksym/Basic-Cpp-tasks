@@ -9,22 +9,22 @@ int main(int argc, char const *argv[]) {
   std::cin >> mass_char;
 
   std::cout << "Your string: " << mass_char << std::endl;
+  size_t length = 0;
+  while (mass_char[length++] != 0) {
+    ;
+  }
 
   char *begin_ = mass_char;
-  char *end_ = (mass_char + MAX_SIZE);
+  char *end_ = (mass_char + length - 1);
   if ((begin_ != nullptr) && (end_ != nullptr) && (begin_ != end_)) {
-    while (begin_ != end_ && end_ > begin_) {
-      *end_--;
-      std::swap(*begin_, *end_);
-      *begin_++;
+    while (begin_ < end_) {
+      std::swap(*begin_++, *--end_);
     }
     std::cout << "Reversed string: ";
-    for (size_t i = 0; i < MAX_SIZE; ++i) {
-      if (mass_char[i] == '\0') {
-        continue;
-      }
-      std::cout << mass_char[i];
-    }
+
+    std::cout << mass_char << std::endl;
     return 0;
+  } else {
+    return 1;
   }
 }
