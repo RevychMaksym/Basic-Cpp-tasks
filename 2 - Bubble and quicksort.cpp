@@ -1,4 +1,3 @@
-#include "pch.h"
 #include <iostream>
 #include <random>
 
@@ -8,7 +7,7 @@ void swap(int &right, int &left) {
   left = temp;
 }
 
-typedef bool (*Compare)(int, int);
+using Compare = std::function<bool(int, int)>;
 
 void bubble_sort(int *begin, int *end, Compare cmp) {
   for (auto it = begin; it != end; ++it) {
@@ -20,37 +19,25 @@ void bubble_sort(int *begin, int *end, Compare cmp) {
   }
 }
 
-void quickSort(int *data, unsigned len, Compare cmp) {
-  int const lenD = len;
-  int pivot = 0;
-  int ind = lenD / 2;
-  int i, j = 0, k = 0;
-  if (lenD > 1) {
-    int *L = new int[lenD];
-    int *R = new int[lenD];
-    pivot = data[ind];
-    for (i = 0; i < lenD; i++) {
-      if (i != ind) {
-        if (cmp(data[i], pivot)) {
-          L[j] = data[i];
-          j++;
-        } else {
-          R[k] = data[i];
-          k++;
-        }
-      }
+int *partition(int *begin, int *end, Compare cmp) {
+  auto pivot = (end - 1);
+  while (begin < end) {
+    if (cmp(*begin, *pivot)) {
+      swap(*begin, *pivot);
     }
-    quickSort(L, j, cmp);
-    quickSort(R, k, cmp);
-    for (int cnt = 0; cnt < lenD; cnt++) {
-      if (cnt < j) {
-        data[cnt] = L[cnt];
-        ;
-      } else if (cnt == j) {
-        data[cnt] = pivot;
-      } else {
-        data[cnt] = R[cnt - (j + 1)];
-      }
+    begin++;
+  }
+  return begin;
+}
+
+void quick_sort(int *begin, int *end, Compare cmp) {
+  if (begin < end) {
+    if (begin != nullptr && end != nullptr && begin != end) {
+      int *pivot_location = partition(begin, end, cmp);
+      quick_sort(begin, pivot_location - 1, cmp);
+      quick_sort(pivot_location + 1, end, cmp);
+    } else {
+      std::cout << "Null pointer exception" << std::endl;
     }
   }
 }
@@ -63,7 +50,7 @@ int main(int argc, char const *argv[]) {
 
   std::cout << "Before sorting......" << std::endl;
   for (size_t index = 0; index < size; ++index) {
-    array[index] = rand() % 39;
+    array[index] = rand() % 30;
     std::cout << array[index] << " ";
   }
 
@@ -75,7 +62,7 @@ int main(int argc, char const *argv[]) {
   std::cin >> choice;
   int *begin_ = array;
   int *end_ = (array + size);
-
+  ;
   switch (choice) {
   case 1:
     std::cout << "1 - Ascending" << std::endl;
@@ -103,13 +90,13 @@ int main(int argc, char const *argv[]) {
     std::cin >> switch_choice_case2;
     switch (switch_choice_case2) {
     case 1:
-      quickSort(begin_, size, [](int a, int b) { return a < b; });
+      quick_sort(begin_, end_, [](int a, int b) { return a > b; });
       break;
     case 2:
-      quickSort(begin_, size, [](int a, int b) { return a > b; });
+      quick_sort(begin_, end_, [](int a, int b) { return a < b; });
       break;
     default:
-      std::cout << "Wrong input!" << std::endl;
+      std::cout << "Wrong input" << std::endl;
       break;
     }
     break;
