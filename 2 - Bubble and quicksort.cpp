@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include <random>
 
 void swap(int &right, int &left) {
